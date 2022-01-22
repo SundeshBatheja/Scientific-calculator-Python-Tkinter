@@ -4,7 +4,7 @@ import tkinter.messagebox
 
 
 #creating a window
-root = Tk()
+root = Tk(className='Python Examples - Window Color')
 pic=PhotoImage(file="onee.png")
 root.iconphoto(False, pic)
 root.configure(bg="black")
@@ -13,6 +13,7 @@ root.title("Scientific Calculator")
 e=Entry(root,width=53,border=15,font="Verdana", bg="white", fg="black", justify=RIGHT, cursor="arrow")
 e.grid(row=0,column=0, columnspan=6, padx=10, pady=20,ipady=18)
 root.resizable(width=False, height=False)
+photo = PhotoImage(file = "one.png")
 
 class calculator:
     def _init_(self):
@@ -27,7 +28,7 @@ class calculator:
     def butclick(self,numb):
         current=e.get()
         e.delete(0,END) 
-        e.insert(0,str(current)+str(numb))
+        e.insert(0,str(current) + str(numb))
 
     def butclear(self):
         e.delete(0,END)
@@ -336,7 +337,7 @@ class calculator:
             e.delete(0, END)
             e.insert(0, display[0:leng-1])
 cal=calculator()
-    
+
 But1=Button(root, text="1",padx=43,  pady=20, bg="black", fg="white", font="5",command=lambda: cal.butclick(1))
 But2=Button(root, text="2",padx=43,  pady=20, bg="black", fg="white",font="5",command=lambda: cal.butclick(2))             
 But3=Button(root, text="3",padx=43,  pady=20, bg="black", fg="white",font="5",command=lambda: cal.butclick(3))
@@ -348,6 +349,8 @@ But8=Button(root, text="8",padx=43,  pady=20, bg="black", fg="white",font="5",co
 But9=Button(root, text="9",padx=43,  pady=20, bg="black", fg="white",font="5",command=lambda: cal.butclick(9))
 But0=Button(root, text="0",padx=43,  pady=20, bg="black", fg="white",font="5",command=lambda: cal.butclick(0))
 Butpoint=Button(root, text=".",padx=56,  pady=20, bg="black",font="10", fg="white",command=lambda: cal.butclick("."))
+Butleftb=Button(root, text=")",padx=44,  pady=20, bg="brown",font="10", fg="white",command=lambda: cal.butclick(")"))
+Butrightb=Button(root, text="(",padx=45,  pady=20, bg="brown",font="10", fg="white",command=lambda: cal.butclick("("))
 Butadd=Button(root, text="+",padx =43,  pady=20, bg="black",font="5", fg="white",command=cal.butadd)
 Butequal=Button(root, text="=",padx=54,  pady=20,font="5", bg="black", fg="white",command=cal.butequal)
 Butclear=Button(root, text="C",padx=42,  pady=20,font="5", bg="black", fg="white",command=cal.butclear)
@@ -394,9 +397,9 @@ Bute=Button(root, text="e", padx=42, pady=20, fg="white", bg="brown",font="5", c
 Butrem=Button(root, text="⌫", padx=47, pady=20, fg="white", bg="brown",font="5", command=cal.butrem)
 
 #image
-photo = PhotoImage(file = "one.png")
 pic = photo.subsample(6,9)
-Butimage=Button(root,state=DISABLED,image=pic, height="65", width="134")
+Butimage=Button(root,state=DISABLED,image=pic, height="63", width="136")
+Buttext=Button(root,text="ABC Calculators",bg="black" ,state=DISABLED, padx=144, pady=22)
 
 
 #row1
@@ -450,5 +453,9 @@ Butmod.grid(row=7, column=2)
 Butrem.grid(row=7, column=3)
 Butimage.grid(row=7, column=4)
 
+#row8
+Butrightb.grid(row=8, column=0)
+Butleftb.grid(row=8, column=1)
+Buttext.grid(row=8, column=2, columnspan=4)
 root.mainloop()
  
